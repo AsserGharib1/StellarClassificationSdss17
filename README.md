@@ -9,7 +9,7 @@ Three-class classification (galaxy / quasar / star) of **100,000 observations** 
 
 | Model | Accuracy | ROC-AUC |
 |---|---|---|
-| **Random Forest** | **97.63%** | **0.996** |
+| **Random Forest** | **97.63%** | **0.9952** |
 | SVM (RBF kernel) | 95.66% | 0.9879 |
 | Logistic Regression | strong baseline | — |
 
