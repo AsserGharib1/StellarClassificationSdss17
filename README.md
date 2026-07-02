@@ -1,4 +1,4 @@
-# Stellar Object Classification — SDSS DR17
+# Stellar Object Classification: SDSS DR17
 
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AsserGharib1/StellarClassificationSdss17/blob/main/stellar_classification.ipynb)
 [![View on nbviewer](https://img.shields.io/badge/view%20full%20notebook-nbviewer-F37626?logo=jupyter&logoColor=white)](https://nbviewer.org/github/AsserGharib1/StellarClassificationSdss17/blob/main/stellar_classification.ipynb)
@@ -11,9 +11,9 @@ Three-class classification (galaxy / quasar / star) of **100,000 observations** 
 |---|---|---|
 | **Random Forest** | **97.63%** | **0.9952** |
 | SVM (RBF kernel) | 95.66% | 0.9879 |
-| Logistic Regression | strong baseline | — |
+| Logistic Regression | strong baseline | n/a |
 
-Random Forest per-class: GALAXY 0.98 precision / 0.98 recall · QSO 0.97 / 0.95 · STAR 0.98 / **1.00**. Learning curves show a small train/validation gap for RF — low overfitting, with accuracy still improving with data.
+Random Forest per-class: GALAXY 0.98 precision / 0.98 recall, QSO 0.97 / 0.95, STAR 0.98 / **1.00**. Learning curves show a small train/validation gap for RF, low overfitting, with accuracy still improving with data.
 
 ## Sample outputs
 
@@ -29,7 +29,7 @@ Leakage-safe split → mean imputation → IQR outlier analysis on the u, g, r, 
 
 ## Data
 
-`star_classification.csv` — [Stellar Classification Dataset SDSS17](https://www.kaggle.com/datasets/fedesoriano/stellar-classification-dataset-sdss17) (Kaggle, fedesoriano; SDSS DR17).
+`star_classification.csv`, [Stellar Classification Dataset SDSS17](https://www.kaggle.com/datasets/fedesoriano/stellar-classification-dataset-sdss17) (Kaggle, fedesoriano, SDSS DR17).
 
 ```bash
 pip install -r requirements.txt
