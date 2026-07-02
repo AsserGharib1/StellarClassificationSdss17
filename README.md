@@ -3,45 +3,33 @@
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AsserGharib1/StellarClassificationSdss17/blob/main/stellar_classification.ipynb)
 [![View on nbviewer](https://img.shields.io/badge/view%20full%20notebook-nbviewer-F37626?logo=jupyter&logoColor=white)](https://nbviewer.org/github/AsserGharib1/StellarClassificationSdss17/blob/main/stellar_classification.ipynb)
 
+Three-class classification (galaxy / quasar / star) of **100,000 observations** from the Sloan Digital Sky Survey DR17, from raw photometry to tuned, learning-curve-audited models.
 
-Three-class classification (star / galaxy / quasar) of **100,000+ observations** from the Sloan Digital Sky Survey (SDSS17).
+## Results (test set, GridSearchCV-tuned)
 
-## Results
-
-| Model (GridSearchCV-tuned) | Accuracy | ROC-AUC |
+| Model | Accuracy | ROC-AUC |
 |---|---|---|
-| **Random Forest** | **97.6%** | **0.996** |
-| SVM | high | — |
-| Logistic Regression | baseline | — |
+| **Random Forest** | **97.63%** | **0.996** |
+| SVM (RBF kernel) | 95.66% | 0.9879 |
+| Logistic Regression | strong baseline | — |
 
-## Pipeline
-
-- Train/test split before any fitting (leakage-safe), mean imputation of injected nulls
-- IQR-based outlier analysis on photometric bands (u, g, r, i, z)
-- Feature/target exploration: redshift separability, band correlations
-- Encoding + scaling, then `GridSearchCV` tuning for all three models
-- Evaluation with confusion matrices, per-class precision/recall/F1, ROC-AUC
+Random Forest per-class: GALAXY 0.98 precision / 0.98 recall · QSO 0.97 / 0.95 · STAR 0.98 / **1.00**. Learning curves show a small train/validation gap for RF — low overfitting, with accuracy still improving with data.
 
 ## Sample outputs
 
-Sky positions by object class:
-
 ![Sky positions](figures/sky_positions.png)
-
-Photometric feature correlations:
 
 ![Correlation matrix](figures/correlation_matrix.png)
 
-Learning curve:
-
 ![Learning curve](figures/learning_curve_1.png)
 
-## Repository contents
+## Pipeline
 
-- `stellar_classification.ipynb` — full workflow with preserved outputs.
-- `star_classification.csv` — SDSS DR17 sample (source: SDSS via Kaggle, *Stellar Classification Dataset – SDSS17*).
+Leakage-safe split → mean imputation → IQR outlier analysis on the u, g, r, i, z photometric bands → redshift/band separability EDA → encoding + scaling → GridSearchCV tuning → confusion matrices, per-class precision/recall/F1, ROC-AUC, learning curves.
 
-## Running
+## Data
+
+`star_classification.csv` — [Stellar Classification Dataset SDSS17](https://www.kaggle.com/datasets/fedesoriano/stellar-classification-dataset-sdss17) (Kaggle, fedesoriano; SDSS DR17).
 
 ```bash
 pip install -r requirements.txt
