@@ -11,7 +11,7 @@ Three-class classification (galaxy / quasar / star) of **100,000 observations** 
 |---|---|---|
 | **Random Forest** | **97.63%** | **0.9952** |
 | SVM (RBF kernel) | 95.66% | 0.9879 |
-| Logistic Regression | strong baseline | n/a |
+| Logistic Regression (lbfgs, C=50) | 96.40% | 0.9895 |
 
 Random Forest per-class: GALAXY 0.98 precision / 0.98 recall, QSO 0.97 / 0.95, STAR 0.98 / **1.00**. Learning curves show a small train/validation gap for RF, low overfitting, with accuracy still improving with data.
 
